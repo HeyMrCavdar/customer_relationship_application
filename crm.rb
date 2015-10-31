@@ -28,12 +28,11 @@ class CRM
 		end
 	end
 
-
 	def call_option(user_selected)
 		add_new_contact if user_selected == 1
 		modify_existing_contact if user_selected == 2
 		delete_contact if user_selected == 3
-		display_contact if user_selected == 4
+		display_all_contacts if user_selected == 4
 		display_attribute if user_selected == 5
 		exit if user_selected == 6
 	end
@@ -55,8 +54,20 @@ class CRM
 		#Contact.create instead of .new to add the Contact to the array
 	end
 
+	def display_all_contacts
+	Contact.all.each do|person|
+				puts "First name: #{person.first_name}, Last Name: #{person.last_name}"
+			end
+	end
+
 	def modify_existing_contact
 		puts "I'm afraid my programmer was lazy, and did not include this functionality"
+	end
+
+	def delete_contact
+	end
+
+	def display_attribute
 	end
 
 	def self.run
@@ -67,3 +78,11 @@ class CRM
 end
 
 CRM.run # NEED TO CALL YOUR DEFS
+
+
+
+
+	# #Hash notation a = {first_name: "Bob", last_name: "Smith", birth_year: 1977}
+	# #a[:last_name] = is the way to get the value out of the hash
+
+	#
